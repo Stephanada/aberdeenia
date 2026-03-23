@@ -113,7 +113,9 @@ h1, h2, h3, h4 {
 #nav .logo img {
   height: 36px;
   width: auto;
-  transition: opacity 0.2s;
+  /* Logo is dark-on-transparent — invert to white for dark nav */
+  filter: invert(1) brightness(1.8);
+  transition: opacity 0.2s, filter 0.2s;
 }
 #nav .logo:hover img { opacity: 0.8; }
 
@@ -466,33 +468,100 @@ h1, h2, h3, h4 {
    PARTNERS
    ============================================================ */
 #partners {
-  padding: 96px 24px;
-  background: var(--white);
+  padding: 112px 24px 120px;
+  background: #0f0f0f;
   text-align: center;
+  overflow: hidden;
+  position: relative;
 }
 
-#partners .section-label { color: var(--muted); }
+/* Subtle background texture lines */
+#partners::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.015) 0px,
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px,
+      transparent 120px
+    );
+  pointer-events: none;
+}
+
+#partners .section-label {
+  color: var(--gold);
+  position: relative;
+}
+
+#partners .section-heading {
+  color: var(--white);
+  margin-bottom: 72px;
+}
+
+/* Gold rule beneath heading */
+#partners .section-heading::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 20px auto 0;
+}
 
 .logo-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 28px 52px;
-  max-width: 980px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 920px;
   margin: 0 auto;
+  position: relative;
 }
 
-.logo-grid img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-  /* mix-blend-mode removes white backgrounds on PNG logos */
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) opacity(0.55);
-  transition: filter 0.3s;
+.logo-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
 }
-.logo-grid img:hover { filter: grayscale(0%) opacity(1); }
+
+/* Remove right border on last column, bottom border on last row */
+.logo-cell:nth-child(4n)   { border-right: none; }
+.logo-cell:nth-child(n+9)  { border-bottom: none; }
+
+.logo-cell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.logo-cell:hover::before { opacity: 0.04; }
+
+.logo-cell img {
+  height: 36px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  /* All logos rendered white on dark background */
+  filter: brightness(0) invert(1) opacity(0.45);
+  transition: filter 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.logo-cell:hover img {
+  filter: brightness(0) invert(1) opacity(0.95);
+  transform: scale(1.08);
+}
 
 /* ============================================================
    SERVICES DETAIL
@@ -683,9 +752,9 @@ h1, h2, h3, h4 {
 .footer-brand img {
   height: 30px;
   width: auto;
-  opacity: 0.6;
+  /* Invert dark logo to white, then tint slightly warm */
+  filter: invert(1) brightness(1.6) sepia(0.15);
   margin-bottom: 20px;
-  filter: brightness(1.2);
 }
 
 .footer-brand address {
@@ -930,6 +999,12 @@ h1, h2, h3, h4 {
 @media (max-width: 900px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
 
+  .logo-grid { grid-template-columns: repeat(3, 1fr); }
+  .logo-cell:nth-child(4n)  { border-right: 1px solid rgba(255,255,255,0.06); }
+  .logo-cell:nth-child(3n)  { border-right: none; }
+  .logo-cell:nth-child(n+9) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .logo-cell:nth-child(n+10){ border-bottom: none; }
+
   .bio-wrapper {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -969,6 +1044,12 @@ h1, h2, h3, h4 {
   .nav-cta { border: none !important; padding: 0 !important; }
 
   .services-grid { grid-template-columns: 1fr; }
+
+  .logo-grid { grid-template-columns: repeat(2, 1fr); }
+  .logo-cell:nth-child(3n)  { border-right: 1px solid rgba(255,255,255,0.06); }
+  .logo-cell:nth-child(2n)  { border-right: none; }
+  .logo-cell:nth-child(n+10){ border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .logo-cell:nth-child(n+11){ border-bottom: none; }
 
   .stat-row { flex-direction: column; gap: 32px; }
   .stat-divider { width: 48px; height: 1px; }
