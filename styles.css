@@ -1070,11 +1070,12 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 768px) {
-  #nav { padding: 0 20px; }
+  #nav { padding: 0 20px; overflow: visible; }
 
   #nav ul {
-    position: fixed;
-    top: var(--nav-h); left: 0; right: 0; bottom: 0;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    height: 100vh;
     background: rgba(8, 8, 8, 0.98);
     flex-direction: column;
     justify-content: center;
