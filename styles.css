@@ -110,14 +110,15 @@ h1, h2, h3, h4 {
   box-shadow: 0 2px 24px rgba(0,0,0,0.45);
 }
 
-#nav .logo img {
+#nav .logo img,
+#nav .logo svg.brand-logo {
   height: 36px;
   width: auto;
-  /* SVG has black paths — invert to crisp white on dark nav */
-  filter: invert(1);
   transition: opacity 0.2s;
 }
-#nav .logo:hover img { opacity: 0.75; }
+#nav .logo svg.brand-logo { fill: white; display: block; }
+#nav .logo:hover img,
+#nav .logo:hover svg.brand-logo { opacity: 0.75; }
 
 #nav ul {
   list-style: none;
@@ -535,20 +536,20 @@ h1, h2, h3, h4 {
 .logo-cell:hover::before { opacity: 0.04; }
 
 .logo-cell img {
-  height: 36px;
+  height: 40px;
   width: auto;
-  max-width: 120px;
+  max-width: 140px;
   object-fit: contain;
   position: relative;
   z-index: 1;
   /* All logos rendered white on dark background */
-  filter: brightness(0) invert(1) opacity(0.45);
+  filter: brightness(0) invert(1) opacity(0.5);
   transition: filter 0.35s var(--ease), transform 0.35s var(--ease);
 }
 
 .logo-cell:hover img {
-  filter: brightness(0) invert(1) opacity(0.95);
-  transform: scale(1.08);
+  filter: brightness(0) invert(1) opacity(1);
+  transform: scale(1.06);
 }
 
 /* ============================================================
@@ -737,13 +738,13 @@ h1, h2, h3, h4 {
   padding: 72px 48px 56px;
 }
 
-.footer-brand img {
+.footer-brand img,
+.footer-brand svg.brand-logo {
   height: 30px;
   width: auto;
-  /* Invert black SVG paths to white, slight warm tint */
-  filter: invert(1) opacity(0.7);
   margin-bottom: 20px;
 }
+.footer-brand svg.brand-logo { fill: rgba(255,255,255,0.7); display: block; }
 
 .footer-brand address {
   font-style: normal;
@@ -954,7 +955,7 @@ h1, h2, h3, h4 {
   background: var(--ink);
   color: var(--white);
 }
-.thankyou-page .ty-logo img { height: 38px; margin-bottom: 52px; filter: invert(1) opacity(0.75); }
+.thankyou-page .ty-logo svg.brand-logo { height: 38px; width: auto; margin-bottom: 52px; fill: rgba(255,255,255,0.75); display: block; margin-left: auto; margin-right: auto; }
 .thankyou-page h1 {
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 200;
