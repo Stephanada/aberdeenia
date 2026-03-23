@@ -113,11 +113,11 @@ h1, h2, h3, h4 {
 #nav .logo img {
   height: 36px;
   width: auto;
-  /* Logo is dark-on-transparent — invert to white for dark nav */
-  filter: invert(1) brightness(1.8);
-  transition: opacity 0.2s, filter 0.2s;
+  /* SVG has black paths — invert to crisp white on dark nav */
+  filter: invert(1);
+  transition: opacity 0.2s;
 }
-#nav .logo:hover img { opacity: 0.8; }
+#nav .logo:hover img { opacity: 0.75; }
 
 #nav ul {
   list-style: none;
@@ -662,11 +662,11 @@ h1, h2, h3, h4 {
 }
 
 .bio-photo {
-  width: 180px; height: 220px;
+  width: 200px; height: 240px;
   object-fit: cover;
-  object-position: top center;
+  object-position: center top;
   border: 2px solid rgba(200,169,110,0.4);
-  filter: grayscale(15%);
+  filter: grayscale(8%);
   display: block;
 }
 
@@ -752,8 +752,8 @@ h1, h2, h3, h4 {
 .footer-brand img {
   height: 30px;
   width: auto;
-  /* Invert dark logo to white, then tint slightly warm */
-  filter: invert(1) brightness(1.6) sepia(0.15);
+  /* Invert black SVG paths to white, slight warm tint */
+  filter: invert(1) opacity(0.7);
   margin-bottom: 20px;
 }
 
@@ -966,7 +966,7 @@ h1, h2, h3, h4 {
   background: var(--ink);
   color: var(--white);
 }
-.thankyou-page .ty-logo img { height: 38px; margin-bottom: 52px; opacity: 0.8; }
+.thankyou-page .ty-logo img { height: 38px; margin-bottom: 52px; filter: invert(1) opacity(0.75); }
 .thankyou-page h1 {
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 200;
