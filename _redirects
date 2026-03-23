@@ -1,6 +1,3 @@
 # Cloudflare Pages _redirects
-# https://developers.cloudflare.com/pages/configuration/redirects/
-
-# Clean URLs – allow /contact and /thank-you without .html extension
-/contact     /contact.html   200
-/thank-you   /thank-you.html 200
+# Clean URLs (.html stripping) are handled automatically by Cloudflare Pages.
+# No manual rules needed.
