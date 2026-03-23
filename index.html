@@ -16,6 +16,9 @@
 </head>
 <body id="header">
 
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- ============================================================ NAV -->
   <nav id="nav">
     <a class="logo" href="#header" aria-label="Aberdeen Investment Advisors – Home">
@@ -61,17 +64,17 @@
     </p>
     <div class="stat-row">
       <div class="stat">
-        <span class="stat-num">$95M+</span>
+        <span class="stat-num" data-target="95" data-prefix="$" data-suffix="M+">$95M+</span>
         <span class="stat-label">Transactions since 2016</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
-        <span class="stat-num">$1.5B+</span>
+        <span class="stat-num" data-target="1.5" data-prefix="$" data-suffix="B+" data-decimals="1">$1.5B+</span>
         <span class="stat-label">CRE assets led by principal</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
-        <span class="stat-num">$30B+</span>
+        <span class="stat-num" data-target="30" data-prefix="$" data-suffix="B+">$30B+</span>
         <span class="stat-label">Assets underwritten</span>
       </div>
     </div>
@@ -315,7 +318,7 @@
 
   <!-- ============================================================ JS -->
   <script>
-    // Mobile nav toggle with animated hamburger
+    // ── Mobile nav toggle ──────────────────────────────────────────
     function toggleNav(btn) {
       const links = document.getElementById('nav-links');
       const open  = links.classList.toggle('open');
@@ -331,12 +334,15 @@
       });
     });
 
-    // Nav shrink on scroll
+    // ── Respect prefers-reduced-motion ────────────────────────────
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── Nav shrink on scroll ───────────────────────────────────────
     window.addEventListener('scroll', function() {
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
-    // Scroll-reveal
+    // ── Scroll-reveal (IntersectionObserver) ──────────────────────
     const revealEls = document.querySelectorAll('.reveal, .reveal-card');
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver(function(entries) {
@@ -347,6 +353,120 @@
       revealEls.forEach(function(el) { io.observe(el); });
     } else {
       revealEls.forEach(function(el) { el.classList.add('visible'); });
+    }
+
+    // ── Section heading line-draw (IntersectionObserver) ──────────
+    const headings = document.querySelectorAll('.section-heading');
+    if ('IntersectionObserver' in window) {
+      const hio = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('line-visible');
+            hio.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      headings.forEach(function(h) { hio.observe(h); });
+    } else {
+      headings.forEach(function(h) { h.classList.add('line-visible'); });
+    }
+
+    // ── Scroll progress bar ───────────────────────────────────────
+    var progressBar = document.getElementById('scroll-progress');
+    function updateProgress() {
+      var scrollTop  = window.scrollY || document.documentElement.scrollTop;
+      var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    // ── Parallax (requestAnimationFrame) ──────────────────────────
+    if (!reducedMotion) {
+      var heroBg     = document.querySelector('.hero-bg');
+      var sectionBgs = document.querySelectorAll('#services-overview .bg-img, #who-we-are .bg-img');
+      var ticking    = false;
+
+      function applyParallax() {
+        var scrollY = window.scrollY;
+
+        // Hero bg — moves up as user scrolls down (subtle 0.35 rate)
+        if (heroBg) {
+          heroBg.style.transform = 'scale(1.04) translateY(' + (scrollY * 0.35) + 'px)';
+        }
+
+        // Section bg imgs — lighter parallax (0.18 rate)
+        sectionBgs.forEach(function(bg) {
+          var rect   = bg.parentElement.getBoundingClientRect();
+          var center = rect.top + rect.height / 2 - window.innerHeight / 2;
+          bg.style.transform = 'translateY(' + (center * 0.18) + 'px)';
+        });
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(applyParallax);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // Run once on load to set initial state
+      applyParallax();
+    }
+
+    // ── Stat counters ─────────────────────────────────────────────
+    function animateCounter(el) {
+      var target   = parseFloat(el.dataset.target);
+      var prefix   = el.dataset.prefix   || '';
+      var suffix   = el.dataset.suffix   || '';
+      var decimals = parseInt(el.dataset.decimals || '0', 10);
+      var duration = 1600; // ms
+      var start    = null;
+
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        // Ease out cubic
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var value = target * ease;
+        el.textContent = prefix + value.toFixed(decimals) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    var statEls = document.querySelectorAll('.stat-num[data-target]');
+    if ('IntersectionObserver' in window && !reducedMotion) {
+      var cio = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            animateCounter(e.target);
+            cio.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      statEls.forEach(function(el) { cio.observe(el); });
+    }
+
+    // ── Service card 3D tilt on mousemove ─────────────────────────
+    if (!reducedMotion) {
+      document.querySelectorAll('.service-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          var rect   = card.getBoundingClientRect();
+          var cx     = rect.left + rect.width  / 2;
+          var cy     = rect.top  + rect.height / 2;
+          var dx     = (e.clientX - cx) / (rect.width  / 2); // -1 to 1
+          var dy     = (e.clientY - cy) / (rect.height / 2); // -1 to 1
+          var rotY   =  dx * 6;  // max 6°
+          var rotX   = -dy * 4;  // max 4°
+          card.style.transform = 'rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translateZ(4px)';
+        });
+        card.addEventListener('mouseleave', function() {
+          card.style.transform = '';
+        });
+      });
     }
   </script>
 

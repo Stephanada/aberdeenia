@@ -59,8 +59,22 @@ h1, h2, h3, h4 {
   letter-spacing: 0.18em;
   color: var(--white);
   margin-bottom: 56px;
+  position: relative;
+  display: inline-block;
 }
 .section-heading.dark { color: var(--ink); }
+
+/* ---------- Scroll progress bar ---------- */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 1001;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
 
 /* ---------- Scroll-reveal ---------- */
 .reveal {
@@ -85,6 +99,49 @@ h1, h2, h3, h4 {
 .reveal-card.visible {
   opacity: 1;
   transform: none;
+}
+
+/* ---------- Section heading underline draw ---------- */
+.section-heading::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -12px;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s var(--ease) 0.3s;
+}
+.section-heading.line-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Parallax targets ---------- */
+.hero-bg,
+#services-overview .bg-img,
+#who-we-are .bg-img {
+  will-change: transform;
+}
+
+/* ---------- Service card 3D tilt ---------- */
+.service-card {
+  perspective: 800px;
+  transform-style: preserve-3d;
+  transition: background 0.3s, border-color 0.3s, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* ---------- Stat counter ---------- */
+.stat-num {
+  display: inline-block;
+  transition: transform 0.4s var(--ease);
+}
+
+/* ---------- Reduced motion overrides ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #scroll-progress { display: none; }
+  .hero-bg, #services-overview .bg-img, #who-we-are .bg-img { will-change: auto; }
+  .section-heading::after { transition: none; transform: scaleX(1); }
+  .service-card { transform: none !important; }
 }
 
 /* ============================================================
@@ -182,11 +239,10 @@ h1, h2, h3, h4 {
   background-size: cover;
   background-position: center 40%;
   filter: brightness(0.38);
-  transform: scale(1.04);
-  transition: transform 8s ease-out;
+  /* Transform handled by JS parallax; no CSS transition to avoid fighting rAF */
 }
-/* Subtle Ken Burns on load */
-#hero:hover .hero-bg { transform: scale(1.07); }
+/* Subtle Ken Burns on load — brightness lift on hover */
+#hero:hover .hero-bg { filter: brightness(0.42); transition: filter 1.2s ease; }
 
 .hero-content {
   position: relative;
@@ -490,7 +546,7 @@ h1, h2, h3, h4 {
   margin-bottom: 72px;
 }
 
-/* Gold rule beneath heading */
+/* Gold rule beneath heading — override animated ::after */
 #partners .section-heading::after {
   content: '';
   display: block;
@@ -498,6 +554,11 @@ h1, h2, h3, h4 {
   height: 1px;
   background: var(--gold);
   margin: 20px auto 0;
+  transform: scaleX(1) !important;
+  transform-origin: center;
+  transition: none;
+  position: static;
+  left: auto; bottom: auto;
 }
 
 .marquee-outer {
