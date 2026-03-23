@@ -1,0 +1,9 @@
+# Cloudflare Pages _redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Clean URLs – allow /contact without .html
+/contact     /contact.html   200
+/thank-you   /thank-you.html 200
+
+# Catch-all 404
+/*           /index.html     404

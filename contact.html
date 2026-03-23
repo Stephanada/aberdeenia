@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – Aberdeen Investment Advisors LLC</title>
+  <meta name="description" content="Contact Aberdeen Investment Advisors to discuss your commercial real estate project and portfolio needs." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.ico.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="header">
+
+  <!-- ============================================================ -->
+  <!-- NAV                                                           -->
+  <!-- ============================================================ -->
+  <nav id="nav">
+    <a class="logo" href="index.html" aria-label="Aberdeen Investment Advisors – Home">
+      <img src="images/AberdeeniaLogo.png.webp" alt="Aberdeen Investment Advisors" />
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-links">
+      <li><a href="index.html#services-overview">Services</a></li>
+      <li><a href="index.html#partners">Partners</a></li>
+      <li><a href="index.html#services-detail">About Our Work</a></li>
+      <li><a href="index.html#who-we-are">Who We Are</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- CONTACT HERO                                                  -->
+  <!-- ============================================================ -->
+  <section id="contact-hero">
+    <div>
+      <h1>Contact Us</h1>
+      <p>Please contact us to discuss your project and portfolio needs.<br>We look forward to hearing from you.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CONTACT FORM                                                  -->
+  <!-- ============================================================ -->
+  <section id="contact-form-section">
+
+    <!-- Cloudflare Pages uses Cloudflare Turnstile + Workers for form handling.
+         For a simple static deployment the form below uses a mailto fallback.
+         To wire up server-side email, replace the action with your worker endpoint
+         or a service like Formspree / Web3Forms. -->
+    <form
+      class="contact-form"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      action="/thank-you.html"
+      novalidate
+    >
+      <!-- Hidden field for static form services -->
+      <input type="hidden" name="form-name" value="contact" />
+
+      <div class="form-row">
+        <div>
+          <label for="first-name">First Name *</label>
+          <input type="text" id="first-name" name="first-name" required autocomplete="given-name" />
+        </div>
+        <div>
+          <label for="last-name">Last Name *</label>
+          <input type="text" id="last-name" name="last-name" required autocomplete="family-name" />
+        </div>
+      </div>
+
+      <div>
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" />
+      </div>
+
+      <div>
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="e.g. Investment Inquiry, Tenant Representation…" />
+      </div>
+
+      <div>
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" required placeholder="Tell us about your project or inquiry…"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Send Message</button>
+    </form>
+
+    <!-- Direct contact info -->
+    <div class="contact-info-block">
+      <h3>Get In Touch Directly</h3>
+      <p><strong>Chris LaCasse</strong> – Founder</p>
+      <p><a href="tel:6023614046">602.361.4046</a></p>
+      <p><a href="mailto:chris@aberdeenia.com">chris@aberdeenia.com</a></p>
+      <p style="margin-top:20px; font-size:0.85rem; color:#999;">
+        Aberdeen Investment Advisors LLC<br />
+        5227 North 7th Street, Phoenix, AZ 85014
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER                                                        -->
+  <!-- ============================================================ -->
+  <footer id="footer">
+    <div class="footer-logo">
+      <img src="images/AberdeeniaLogo.png.webp" alt="Aberdeen Investment Advisors" />
+    </div>
+    <address>Aberdeen Investment Advisors LLC&ensp;·&ensp;5227 North 7th Street, Phoenix, AZ 85014</address>
+    <nav aria-label="Footer navigation">
+      <a href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html">Home</a>
+    </nav>
+    <p class="copy">&copy; Aberdeen Investment Advisors LLC 2021. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      const links = document.getElementById('nav-links');
+      links.classList.toggle('open');
+    }
+    document.querySelectorAll('#nav-links a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('nav-links').classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
