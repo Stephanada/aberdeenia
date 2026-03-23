@@ -6,66 +6,59 @@
   <title>Contact – Aberdeen Investment Advisors LLC</title>
   <meta name="description" content="Contact Aberdeen Investment Advisors to discuss your commercial real estate project and portfolio needs." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.ico.png" />
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body id="header">
 
-  <!-- ============================================================ -->
-  <!-- NAV                                                           -->
-  <!-- ============================================================ -->
+  <!-- NAV -->
   <nav id="nav">
     <a class="logo" href="index.html" aria-label="Aberdeen Investment Advisors – Home">
       <img src="images/AberdeeniaLogo.png.webp" alt="Aberdeen Investment Advisors" />
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleNav(this)">
       <span></span><span></span><span></span>
     </button>
     <ul id="nav-links">
       <li><a href="index.html#services-overview">Services</a></li>
-      <li><a href="index.html#partners">Partners</a></li>
-      <li><a href="index.html#services-detail">About Our Work</a></li>
-      <li><a href="index.html#who-we-are">Who We Are</a></li>
+      <li><a href="index.html#partners">Clients</a></li>
+      <li><a href="index.html#services-detail">Our Work</a></li>
+      <li><a href="index.html#who-we-are">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects</a></li>
+      <li><a class="nav-cta" href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects ↗</a></li>
     </ul>
   </nav>
 
-  <!-- ============================================================ -->
-  <!-- CONTACT HERO                                                  -->
-  <!-- ============================================================ -->
+  <!-- HERO -->
   <section id="contact-hero">
-    <div>
+    <div class="contact-hero-inner">
+      <p class="eyebrow">Aberdeen Investment Advisors</p>
       <h1>Contact Us</h1>
-      <p>Please contact us to discuss your project and portfolio needs.<br>We look forward to hearing from you.</p>
+      <p>Please contact us to discuss your project and portfolio needs.<br />
+      We look forward to hearing from you.</p>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- CONTACT FORM                                                  -->
-  <!-- ============================================================ -->
+  <!-- FORM -->
   <section id="contact-form-section">
 
-    <!-- Cloudflare Pages uses Cloudflare Turnstile + Workers for form handling.
-         For a simple static deployment the form below uses a mailto fallback.
-         To wire up server-side email, replace the action with your worker endpoint
-         or a service like Formspree / Web3Forms. -->
+    <!--
+      For Cloudflare Pages form handling use Web3Forms (free, no server needed):
+      1. Get a free access key at https://web3forms.com/
+      2. Replace YOUR_ACCESS_KEY below and set action to "#"
+      Or use Formspree: action="https://formspree.io/f/YOUR_ID"
+    -->
     <form
       class="contact-form"
       name="contact"
       method="POST"
-      data-netlify="true"
-      action="/thank-you.html"
+      action="thank-you.html"
       novalidate
     >
-      <!-- Hidden field for static form services -->
       <input type="hidden" name="form-name" value="contact" />
 
       <div class="form-row">
@@ -91,24 +84,25 @@
 
       <div>
         <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" placeholder="e.g. Investment Inquiry, Tenant Representation…" />
+        <input type="text" id="subject" name="subject"
+          placeholder="e.g. Investment Inquiry, Tenant Representation…" />
       </div>
 
       <div>
         <label for="message">Message *</label>
-        <textarea id="message" name="message" required placeholder="Tell us about your project or inquiry…"></textarea>
+        <textarea id="message" name="message" required
+          placeholder="Tell us about your project or inquiry…"></textarea>
       </div>
 
       <button type="submit" class="btn-submit">Send Message</button>
     </form>
 
-    <!-- Direct contact info -->
     <div class="contact-info-block">
-      <h3>Get In Touch Directly</h3>
-      <p><strong>Chris LaCasse</strong> – Founder</p>
+      <h3>Direct Contact</h3>
+      <p><strong>Chris LaCasse</strong> — Founder &amp; Principal</p>
       <p><a href="tel:6023614046">602.361.4046</a></p>
       <p><a href="mailto:chris@aberdeenia.com">chris@aberdeenia.com</a></p>
-      <p style="margin-top:20px; font-size:0.85rem; color:#999;">
+      <p style="margin-top:20px; font-size:0.82rem; color:#aaa; line-height:1.8;">
         Aberdeen Investment Advisors LLC<br />
         5227 North 7th Street, Phoenix, AZ 85014
       </p>
@@ -116,32 +110,53 @@
 
   </section>
 
-  <!-- ============================================================ -->
-  <!-- FOOTER                                                        -->
-  <!-- ============================================================ -->
+  <!-- FOOTER -->
   <footer id="footer">
-    <div class="footer-logo">
-      <img src="images/AberdeeniaLogo.png.webp" alt="Aberdeen Investment Advisors" />
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/AberdeeniaLogo.png.webp" alt="Aberdeen Investment Advisors" />
+        <address>
+          Aberdeen Investment Advisors LLC<br />
+          5227 North 7th Street, Phoenix, AZ 85014
+        </address>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html#services-overview">Services</a>
+        <a href="index.html#partners">Clients</a>
+        <a href="index.html#services-detail">Our Work</a>
+        <a href="index.html#who-we-are">Team</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects ↗</a>
+      </nav>
+      <div class="footer-contact">
+        <a href="tel:6023614046">602.361.4046</a>
+        <a href="mailto:chris@aberdeenia.com">chris@aberdeenia.com</a>
+      </div>
     </div>
-    <address>Aberdeen Investment Advisors LLC&ensp;·&ensp;5227 North 7th Street, Phoenix, AZ 85014</address>
-    <nav aria-label="Footer navigation">
-      <a href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="index.html">Home</a>
-    </nav>
-    <p class="copy">&copy; Aberdeen Investment Advisors LLC 2021. All rights reserved.</p>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Aberdeen Investment Advisors LLC. All rights reserved.</p>
+      <a href="#header" class="back-top">Back to top ↑</a>
+    </div>
   </footer>
 
   <script>
-    function toggleNav() {
+    function toggleNav(btn) {
       const links = document.getElementById('nav-links');
-      links.classList.toggle('open');
+      const open  = links.classList.toggle('open');
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
     }
     document.querySelectorAll('#nav-links a').forEach(function(link) {
       link.addEventListener('click', function() {
         document.getElementById('nav-links').classList.remove('open');
+        const btn = document.querySelector('.nav-toggle');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
       });
     });
+    window.addEventListener('scroll', function() {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
   </script>
 
 </body>

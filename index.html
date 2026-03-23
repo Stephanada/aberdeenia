@@ -4,133 +4,138 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aberdeen Investment Advisors LLC</title>
-  <meta name="description" content="Aberdeen Investment Advisors is a privately held, boutique commercial real estate investment and development firm headquartered in Scottsdale, Arizona." />
+  <meta name="description" content="Aberdeen Investment Advisors is a privately held, boutique commercial real estate investment and development firm headquartered in Phoenix, Arizona." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.ico.png" />
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body id="header">
 
-  <!-- ============================================================ -->
-  <!-- NAV                                                           -->
-  <!-- ============================================================ -->
+  <!-- ============================================================ NAV -->
   <nav id="nav">
     <a class="logo" href="#header" aria-label="Aberdeen Investment Advisors – Home">
       <img src="images/AberdeeniaLogo.png.webp" alt="Aberdeen Investment Advisors" />
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleNav(this)">
       <span></span><span></span><span></span>
     </button>
     <ul id="nav-links">
       <li><a href="#services-overview">Services</a></li>
-      <li><a href="#partners">Partners</a></li>
-      <li><a href="#services-detail">About Our Work</a></li>
-      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="#partners">Clients</a></li>
+      <li><a href="#services-detail">Our Work</a></li>
+      <li><a href="#who-we-are">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects</a></li>
+      <li><a class="nav-cta" href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects ↗</a></li>
     </ul>
   </nav>
 
-  <!-- ============================================================ -->
-  <!-- HERO                                                          -->
-  <!-- ============================================================ -->
+  <!-- ============================================================ HERO -->
   <section id="hero" aria-label="Hero">
     <div class="hero-bg" role="img" aria-label="Aerial view of commercial real estate"></div>
     <div class="hero-content">
-      <p class="eyebrow">A Boutique Firm · Created for Smart Investment</p>
-      <h1>Aberdeen Investment<br>Advisors</h1>
-      <p class="tagline">Commercial Real Estate · Investment &amp; Development</p>
+      <p class="eyebrow">Boutique · Commercial Real Estate · Phoenix, AZ</p>
+      <h1>Aberdeen<br><em>Investment Advisors</em></h1>
+      <p class="hero-sub">Investment &amp; Development &ensp;·&ensp; Brokerage &ensp;·&ensp; Advisory</p>
+      <div class="hero-actions">
+        <a href="#services-overview" class="btn btn-gold">Our Services</a>
+        <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <a href="#intro" class="scroll-hint" aria-label="Scroll down">
+      <span class="scroll-line"></span>
+    </a>
+  </section>
+
+  <!-- ============================================================ INTRO / STATS -->
+  <section id="intro" class="reveal">
+    <p class="intro-text">
+      Aberdeen Investment Advisors is a privately held, boutique commercial real estate
+      investment and development firm headquartered in Phoenix, Arizona. Through its
+      extensive network of industry contacts and in-depth market knowledge, Aberdeen
+      delivers exceptional risk-adjusted returns on investment and development projects,
+      alongside first-class brokerage and advisory services.
+    </p>
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-num">$95M+</span>
+        <span class="stat-label">Transactions since 2016</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">$1.5B+</span>
+        <span class="stat-label">CRE assets led by principal</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">$30B+</span>
+        <span class="stat-label">Assets underwritten</span>
+      </div>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- INTRO                                                         -->
-  <!-- ============================================================ -->
-  <section id="intro">
-    <p>
-      Aberdeen Investment Advisors is a privately held, boutique commercial real estate
-      investment and development firm headquartered in Scottsdale, Arizona. Through its
-      extensive network of industry contacts and in-depth market knowledge, Aberdeen is
-      able to provide clients and investors with exceptional opportunities for excellent
-      risk-adjusted returns on commercial real estate investment and development projects,
-      as well as first-class service to brokerage and advisory clients.
-    </p>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- SERVICES OVERVIEW (dark bg image)                             -->
-  <!-- ============================================================ -->
+  <!-- ============================================================ SERVICES OVERVIEW -->
   <section id="services-overview" aria-label="Our Services">
     <div class="bg-img" role="presentation"></div>
     <div class="inner">
-      <p class="section-label">Our Services</p>
+      <p class="section-label">What We Do</p>
+      <h2 class="section-heading">Our Services</h2>
       <div class="services-grid">
 
-        <div class="service-card">
-          <img class="card-img" src="images/Chris+Aberdeen+6.png" alt="Direct Investment &amp; Development" loading="lazy" />
-          <h3>Direct Investment &amp; Development</h3>
-          <p>We have completed $95 million in transactions since 2016 and are actively
-          pursuing additional investment and development opportunities nationwide.</p>
-          <span class="arrow">▼</span>
-        </div>
+        <a href="#svc-investment" class="service-card reveal-card">
+          <img class="card-img" src="images/Chris+Aberdeen+6.png" alt="" loading="lazy" />
+          <h3>Direct Investment<br>&amp; Development</h3>
+          <p>$95M in completed transactions. Actively pursuing retail and mixed-use opportunities in southwest growth markets.</p>
+          <span class="card-link">Learn more →</span>
+        </a>
 
-        <div class="service-card">
-          <img class="card-img" src="images/Chris+Aberdeen+1.png" alt="Fund Management" loading="lazy" />
+        <a href="#svc-fund" class="service-card reveal-card">
+          <img class="card-img" src="images/Chris+Aberdeen+1.png" alt="" loading="lazy" />
           <h3>Fund Management</h3>
-          <p>Aberdeen is pleased to announce the formation of Aberdeen Real Estate
-          Income and Growth Fund LP.</p>
-          <span class="arrow">▼</span>
-        </div>
+          <p>Aberdeen Real Estate Income and Growth Fund LP — targeting underperforming assets with strong return potential.</p>
+          <span class="card-link">Learn more →</span>
+        </a>
 
-        <div class="service-card">
-          <img class="card-img" src="images/Chris+Aberdeen+2.png" alt="Tenant Representation" loading="lazy" />
+        <a href="#svc-tenant" class="service-card reveal-card">
+          <img class="card-img" src="images/Chris+Aberdeen+2.png" alt="" loading="lazy" />
           <h3>Tenant Representation</h3>
-          <p>We work with tenants looking to start a new business, relocate, or expand
-          their operations by helping them identify and secure the best locations nationwide.</p>
-          <span class="arrow">▼</span>
-        </div>
+          <p>Proven strategies to identify and secure the right locations for new, relocating, or expanding businesses nationwide.</p>
+          <span class="card-link">Learn more →</span>
+        </a>
 
-        <div class="service-card">
-          <img class="card-img" src="images/Chris+Aberdeen+4.png" alt="Buyer Representation" loading="lazy" />
+        <a href="#svc-buyer" class="service-card reveal-card">
+          <img class="card-img" src="images/Chris+Aberdeen+4.png" alt="" loading="lazy" />
           <h3>Buyer Representation</h3>
-          <p>Our highly experienced team has in-depth market knowledge and an extensive
-          network of industry contacts that provides for unsurpassed acquisition opportunities.</p>
-          <span class="arrow">▼</span>
-        </div>
+          <p>In-depth market knowledge and an extensive contact network delivering unsurpassed acquisition opportunities.</p>
+          <span class="card-link">Learn more →</span>
+        </a>
 
-        <div class="service-card">
-          <img class="card-img" src="images/Chris+Aberdeen+5.png.webp" alt="Seller &amp; Landlord Representation" loading="lazy" />
-          <h3>Seller &amp; Landlord Representation</h3>
-          <p>Aberdeen is in a unique position to provide brokerage clients with the
-          hands-on attention required to successfully market their property.</p>
-          <span class="arrow">▼</span>
-        </div>
+        <a href="#svc-seller" class="service-card reveal-card">
+          <img class="card-img" src="images/Chris+Aberdeen+5.png.webp" alt="" loading="lazy" />
+          <h3>Seller &amp; Landlord<br>Representation</h3>
+          <p>Hands-on boutique attention — maximising asset value and securing successful transactions in competitive markets.</p>
+          <span class="card-link">Learn more →</span>
+        </a>
 
-        <div class="service-card">
-          <img class="card-img" src="images/Chris+Aberdeen+3.png.webp" alt="Advisory Services" loading="lazy" />
+        <a href="#svc-advisory" class="service-card reveal-card">
+          <img class="card-img" src="images/Chris+Aberdeen+3.png.webp" alt="" loading="lazy" />
           <h3>Advisory Services</h3>
-          <p>With billions of dollars' worth of assets underwritten, we identify strategic
-          opportunities to maximize your asset's value.</p>
-          <span class="arrow">▼</span>
-        </div>
+          <p>Institutional-quality financial models and due diligence, with over $30B in assets underwritten by our principals.</p>
+          <span class="card-link">Learn more →</span>
+        </a>
 
       </div>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- PARTNER LOGOS                                                 -->
-  <!-- ============================================================ -->
-  <section id="partners" aria-label="Partner Brands">
-    <p class="section-label">Successful Partnerships With Aberdeen &amp; Other Firms</p>
-    <p class="section-sub"></p>
+  <!-- ============================================================ PARTNERS -->
+  <section id="partners" aria-label="Client Brands" class="reveal">
+    <p class="section-label">Successful Partnerships</p>
+    <h2 class="section-heading dark">With Aberdeen &amp; Our Affiliated Firms</h2>
     <div class="logo-grid">
       <img src="images/TARGET.png.webp"          alt="Target" loading="lazy" />
       <img src="images/take5ooil.png.webp"        alt="Take 5 Oil Change" loading="lazy" />
@@ -147,138 +152,188 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- SERVICES DETAIL                                               -->
-  <!-- ============================================================ -->
-  <section id="services-detail" aria-label="Services Detail">
-    <p class="section-label">What We Do</p>
+  <!-- ============================================================ SERVICES DETAIL -->
+  <section id="services-detail" aria-label="Services in depth">
+    <div class="services-detail-inner">
+      <p class="section-label">In Depth</p>
+      <h2 class="section-heading dark">How We Work</h2>
 
-    <div class="service-detail-item">
-      <h2>Direct Investment &amp; Development</h2>
-      <p>Aberdeen and its partners have completed $95 million in transactions since 2016
-      and are actively pursuing additional commercial real estate investment and development
-      opportunities nationwide, with a focus on retail assets in growth markets in the
-      southwest. <a href="contact.html">Contact us</a> for detailed acquisition criteria.</p>
+      <div id="svc-investment" class="svc-item reveal">
+        <div class="svc-num" aria-hidden="true">01</div>
+        <div class="svc-body">
+          <h3>Direct Investment &amp; Development</h3>
+          <p>Aberdeen and its partners have completed $95 million in transactions since
+          2016 and are actively pursuing additional commercial real estate investment and
+          development opportunities nationwide, with a focus on retail assets in growth
+          markets in the southwest. <a href="contact.html">Contact us</a> for detailed
+          acquisition criteria.</p>
+        </div>
+      </div>
+
+      <div id="svc-fund" class="svc-item reveal">
+        <div class="svc-num" aria-hidden="true">02</div>
+        <div class="svc-body">
+          <h3>Fund Management</h3>
+          <p>Aberdeen Real Estate Income and Growth Fund is a private limited partnership
+          focused on identifying underperforming and mismanaged commercial real estate
+          assets in growth markets nationwide, with a focus on the southwest. The fund
+          provides accredited investors with the opportunity to invest in a diversified
+          pool of projects, targeting consistent cash flow and strong risk-adjusted
+          returns. <a href="contact.html">Contact us</a> for the fund offering and private
+          placement memorandum.</p>
+        </div>
+      </div>
+
+      <div id="svc-tenant" class="svc-item reveal">
+        <div class="svc-num" aria-hidden="true">03</div>
+        <div class="svc-body">
+          <h3>Tenant Representation</h3>
+          <p>Identifying the right location, negotiating leases, and developing an
+          effective growth strategy can be a daunting challenge. Aberdeen has proven
+          tools and strategies to present the best opportunities and secure the right
+          locations for tenants looking to start a new business, relocate, or expand
+          nationwide. Having an experienced partner allows you to focus on operations
+          while we focus on your real estate needs.</p>
+        </div>
+      </div>
+
+      <div id="svc-buyer" class="svc-item reveal">
+        <div class="svc-num" aria-hidden="true">04</div>
+        <div class="svc-body">
+          <h3>Buyer Representation</h3>
+          <p>Acquiring commercial real estate is a highly complex process that requires
+          experienced guidance to avoid unnecessary risk and ensure an appropriate
+          purchase price. Aberdeen's team delivers in-depth market knowledge and an
+          extensive network of contacts, providing unsurpassed acquisition opportunities
+          for investors making direct placements nationwide.</p>
+        </div>
+      </div>
+
+      <div id="svc-seller" class="svc-item reveal">
+        <div class="svc-num" aria-hidden="true">05</div>
+        <div class="svc-body">
+          <h3>Seller &amp; Landlord Representation</h3>
+          <p>As a boutique firm, Aberdeen provides brokerage clients with the hands-on
+          attention required to successfully market their property to tenants and buyers.
+          This ensures every asset receives the care needed to maximise value and achieve
+          a successful transaction in a highly competitive marketplace.</p>
+        </div>
+      </div>
+
+      <div id="svc-advisory" class="svc-item reveal">
+        <div class="svc-num" aria-hidden="true">06</div>
+        <div class="svc-body">
+          <h3>Advisory Services</h3>
+          <p>Aberdeen's principals have extensive experience preparing
+          institutional-quality financial models and in-depth due diligence reports.
+          With over $30 billion in assets underwritten, Aberdeen delivers comprehensive
+          financial models and identifies strategic opportunities to maximise asset value
+          for clients at every stage.</p>
+        </div>
+      </div>
+
     </div>
-
-    <div class="service-detail-item">
-      <h2>Fund Management</h2>
-      <p>Aberdeen is pleased to announce the formation of Aberdeen Real Estate Income and
-      Growth Fund, a private real estate limited partnership focused on identifying
-      underperforming and mismanaged commercial real estate assets in growth markets
-      nationwide, with a focus on the southwest. The fund provides accredited investors
-      with the opportunity to invest in a pool of investment and development projects
-      with the objective of generating consistent cash flow and strong risk-adjusted
-      returns. <a href="contact.html">Contact us</a> for details on the fund offering and a private placement memorandum.</p>
-    </div>
-
-    <div class="service-detail-item">
-      <h2>Tenant Representation</h2>
-      <p>Identifying the right location, negotiating leases, and developing an effective
-      growth strategy for your business can be a daunting challenge. Aberdeen has proven
-      tools and strategies to present the best opportunities and secure the right locations
-      for tenants looking to start a new business, relocate, or expand their current
-      operations nationwide. This process is paramount to the success of your business,
-      and having an experienced partner to guide you allows you to focus on your business
-      operations while we focus on your real estate needs.</p>
-    </div>
-
-    <div class="service-detail-item">
-      <h2>Buyer Representation</h2>
-      <p>Acquiring commercial real estate is a highly complex process that requires the
-      guidance of an experienced professional to avoid unnecessary risks and ensure an
-      appropriate purchase price. Aberdeen's highly experienced team provides investors
-      looking to make their own direct investment with in-depth market knowledge and an
-      extensive network of industry contacts that delivers unsurpassed acquisition
-      opportunities nationwide.</p>
-    </div>
-
-    <div class="service-detail-item">
-      <h2>Seller &amp; Landlord Representation</h2>
-      <p>As a boutique firm, Aberdeen is in a unique position to provide brokerage clients
-      with the hands-on attention that is required to successfully market their property
-      to tenants and buyers. This ensures Aberdeen's clients' assets receive the level of
-      attention required to maximize asset value and for a successful transaction in a
-      highly competitive marketplace.</p>
-    </div>
-
-    <div class="service-detail-item">
-      <h2>Advisory Services</h2>
-      <p>The principals of Aberdeen have extensive experience preparing institutional-quality
-      financial models and in-depth due diligence reports for commercial real estate assets.
-      With over $30 billion worth of assets underwritten, Aberdeen is able to provide clients
-      with comprehensive financial models and identify strategic opportunities to maximize
-      asset value.</p>
-    </div>
-
   </section>
 
-  <!-- ============================================================ -->
-  <!-- WHO WE ARE                                                    -->
-  <!-- ============================================================ -->
+  <!-- ============================================================ WHO WE ARE -->
   <section id="who-we-are" aria-label="Who We Are">
     <div class="bg-img" role="presentation"></div>
     <div class="inner">
       <p class="section-label">Who We Are</p>
-      <div class="bio-wrapper">
-        <img class="bio-photo" src="images/Lacasse_Chris_sm.png.webp" alt="Christopher LaCasse, Founder" loading="lazy" />
-        <div>
-          <h2>Christopher LaCasse</h2>
-          <p class="title">Founder</p>
-          <p>
-            Aberdeen Investment Advisors is led by Chris Lacasse. Prior to the formation of
-            Aberdeen, Chris held various positions with private and institutional real estate
-            investment organizations in the United States and Canada. Throughout his career,
-            Chris has led the acquisition, disposition, and development of over $1.5 billion
-            worth of commercial real estate assets as well as the management of a large
-            institutional portfolio with a net asset value in excess of $1 billion.
-          </p>
-          <p style="margin-top:16px; color:#ccc; font-size:0.93rem; font-weight:300; line-height:1.9;">
-            Chris has a Master's Degree in International Real Estate from the University of
-            Aberdeen (Scotland) and the University of Hong Kong. He is also a Chartered
-            Property Finance &amp; Investment Surveyor, a member of the Royal Institute of
-            Chartered Surveyors, and is a licensed real estate broker in the State of Arizona.
-          </p>
-          <p class="bio-contact" style="margin-top:24px;">
+      <h2 class="section-heading">The Team</h2>
+      <div class="bio-wrapper reveal">
+        <div class="bio-photo-wrap">
+          <img class="bio-photo" src="images/Lacasse_Chris_sm.png.webp"
+               alt="Christopher LaCasse, Founder of Aberdeen Investment Advisors" loading="lazy" />
+        </div>
+        <div class="bio-text">
+          <h3 class="bio-name">Christopher LaCasse</h3>
+          <p class="bio-title">Founder &amp; Principal</p>
+          <p>Prior to founding Aberdeen, Chris held positions with private and
+          institutional real estate investment organizations in the United States and
+          Canada. Throughout his career, Chris has led the acquisition, disposition, and
+          development of over <strong>$1.5 billion</strong> in commercial real estate
+          assets, as well as the management of an institutional portfolio with a net
+          asset value exceeding <strong>$1 billion</strong>.</p>
+          <p>Chris holds a Master's Degree in International Real Estate from the
+          University of Aberdeen (Scotland) and the University of Hong Kong. He is a
+          Chartered Property Finance &amp; Investment Surveyor, a member of the Royal
+          Institute of Chartered Surveyors (RICS), and a licensed real estate broker
+          in Arizona.</p>
+          <div class="bio-contact">
             <a href="tel:6023614046">602.361.4046</a>
-            &nbsp;|&nbsp;
+            <span class="bio-sep">|</span>
             <a href="mailto:chris@aberdeenia.com">chris@aberdeenia.com</a>
-          </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- FOOTER                                                        -->
-  <!-- ============================================================ -->
+  <!-- ============================================================ FOOTER -->
   <footer id="footer">
-    <div class="footer-logo">
-      <img src="images/AberdeeniaLogo.png.webp" alt="Aberdeen Investment Advisors" />
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/AberdeeniaLogo.png.webp" alt="Aberdeen Investment Advisors" />
+        <address>
+          Aberdeen Investment Advisors LLC<br />
+          5227 North 7th Street, Phoenix, AZ 85014
+        </address>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#services-overview">Services</a>
+        <a href="#partners">Clients</a>
+        <a href="#services-detail">Our Work</a>
+        <a href="#who-we-are">Team</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects ↗</a>
+      </nav>
+      <div class="footer-contact">
+        <a href="tel:6023614046">602.361.4046</a>
+        <a href="mailto:chris@aberdeenia.com">chris@aberdeenia.com</a>
+      </div>
     </div>
-    <address>Aberdeen Investment Advisors LLC&ensp;·&ensp;5227 North 7th Street, Phoenix, AZ 85014</address>
-    <nav aria-label="Footer navigation">
-      <a href="https://sullivanhayes.com/properties/?propertyId=1366440-sale" target="_blank" rel="noopener">Current Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="#header">Back to Top ↑</a>
-    </nav>
-    <p class="copy">&copy; Aberdeen Investment Advisors LLC 2021. All rights reserved.</p>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Aberdeen Investment Advisors LLC. All rights reserved.</p>
+      <a href="#header" class="back-top">Back to top ↑</a>
+    </div>
   </footer>
 
-  <!-- ============================================================ -->
-  <!-- JS – Mobile Nav Toggle                                        -->
-  <!-- ============================================================ -->
+  <!-- ============================================================ JS -->
   <script>
-    function toggleNav() {
+    // Mobile nav toggle with animated hamburger
+    function toggleNav(btn) {
       const links = document.getElementById('nav-links');
-      links.classList.toggle('open');
+      const open  = links.classList.toggle('open');
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
     }
-    // Close nav when a link is clicked (mobile)
     document.querySelectorAll('#nav-links a').forEach(function(link) {
       link.addEventListener('click', function() {
         document.getElementById('nav-links').classList.remove('open');
+        const btn = document.querySelector('.nav-toggle');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // Nav shrink on scroll
+    window.addEventListener('scroll', function() {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Scroll-reveal
+    const revealEls = document.querySelectorAll('.reveal, .reveal-card');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      revealEls.forEach(function(el) { io.observe(el); });
+    } else {
+      revealEls.forEach(function(el) { el.classList.add('visible'); });
+    }
   </script>
 
 </body>
